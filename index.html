@@ -115,22 +115,188 @@
         box-shadow: 0 12px 28px rgba(255, 0, 0, 0.4);
       }
 
-      .visual-mockup {
+      /* Блок с макетом */
+      .mockup-area {
         position: relative;
         width: 100%;
-        height: 400px;
-        background: rgba(255, 255, 255, 0.05);
+        height: 420px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      /* Окно десктопного браузера */
+      .desktop-window {
+        position: relative;
+        width: 100%;
+        max-width: 520px;
+        aspect-ratio: 16/9;
+        background: #fff;
+        border-radius: 16px;
+        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+        overflow: hidden;
+        z-index: 2;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .desktop-header {
+        height: 40px;
+        background: #f5f5f5;
+        display: flex;
+        align-items: center;
+        padding: 0 16px;
+        border-bottom: 1px solid #e0e0e0;
+      }
+
+      .desktop-header-icons {
+        display: flex;
+        gap: 8px;
+      }
+
+      .header-btn {
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        background: #e0e0e0;
+      }
+
+      .header-btn.red { background: #ff5f56; }
+      .header-btn.yellow { background: #ffbd2e; }
+      .header-btn.green { background: #27c93f; }
+
+      .desktop-content {
+        flex: 1;
+        padding: 24px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+      }
+
+      .search-bar-mock {
+        width: 100%;
+        max-width: 400px;
+        height: 48px;
+        background: #f5f5f5;
         border-radius: 24px;
         display: flex;
         align-items: center;
         justify-content: center;
-        overflow: hidden;
-        border: 1px solid rgba(255, 255, 255, 0.1);
+        color: #555;
+        font-size: 14px;
+        margin-bottom: 24px;
+        position: relative;
       }
 
-      .mockup-placeholder {
-        color: var(--text-secondary);
-        font-size: 18px;
+      .search-bar-mock::before {
+        content: "Введите запрос или адрес";
+        position: absolute;
+        left: 16px;
+      }
+
+      .quick-actions {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 12px;
+        margin-top: 24px;
+      }
+
+      .action-btn {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 6px;
+        color: #333;
+        font-size: 12px;
+        cursor: pointer;
+      }
+
+      .action-icon-box {
+        width: 40px;
+        height: 40px;
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-weight: bold;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+      }
+
+      .ai-btn {
+        background: #ff9900;
+      }
+
+      .mobile-mock {
+        position: absolute;
+        width: 200px;
+        height: 400px;
+        background: #fff;
+        border-radius: 32px;
+        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+        z-index: 3;
+        display: flex;
+        flex-direction: column;
+        border: 1px solid #e0e0e0;
+        transform: rotate(-10deg) translate(-120px, 60px);
+      }
+
+      .mobile-status-bar {
+        height: 40px;
+        background: #f5f5f5;
+        display: flex;
+        align-items: center;
+        padding: 0 16px;
+        border-bottom: 1px solid #e0e0e0;
+        justify-content: space-between;
+        font-size: 12px;
+        color: #555;
+      }
+
+      .mobile-content {
+        flex: 1;
+        padding: 16px;
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 8px;
+        padding-top: 24px;
+      }
+
+      .mobile-icon-box {
+        width: 40px;
+        height: 40px;
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-weight: bold;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+      }
+
+      .mobile-bottom-bar {
+        height: 60px;
+        background: #fff;
+        border-top: 1px solid #e0e0e0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        padding: 0 16px;
+      }
+
+      .bottom-btn {
+        width: 40px;
+        height: 40px;
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #555;
+        font-size: 12px;
       }
 
       .disclaimer {
@@ -169,6 +335,10 @@
         .nav-links a {
           margin: 0 12px;
         }
+
+        .mobile-mock {
+          transform: rotate(-10deg) translate(-60px, 40px);
+        }
       }
     </style>
   </head>
@@ -192,9 +362,61 @@
           <a href="https://redirect.appmetrica.yandex.com/serve/390294314791538376?partner_id=831050&appmetrica_js_redirect=0&clid=15344238&banerid=1315344239&full=0" class="download-btn" target="_blank" rel="noopener">Скачать</a>
         </div>
 
-        <div class="visual-mockup">
-          <div class="mockup-placeholder">
-            Здесь будет изображение интерфейса (макет браузера и мобильного приложения)
+        <div class="mockup-area">
+          <!-- Десктопное окно -->
+          <div class="desktop-window">
+            <div class="desktop-header">
+              <div class="desktop-header-icons">
+                <div class="header-btn red"></div>
+                <div class="header-btn yellow"></div>
+                <div class="header-btn green"></div>
+              </div>
+            </div>
+            <div class="desktop-content">
+              <div class="search-bar-mock"></div>
+              <div style="text-align:center; color:#555; margin-bottom:16px;">Найти в Яндексе или спросить Алису AI</div>
+              <div class="quick-actions">
+                <div class="action-btn">
+                  <div class="action-icon-box" style="background:#FF0000;">О</div>
+                  Оживить фото
+                </div>
+                <div class="action-btn">
+                  <div class="action-icon-box" style="background:#007bff;">И</div>
+                  Исследовать
+                </div>
+                <div class="action-btn">
+                  <div class="action-icon-box" style="background:#FF9900;">Н</div>
+                  Нарисовать картинку
+                </div>
+              </div>
+              <div style="margin-top:24px; display:flex; gap:12px; justify-content:center;">
+                <div style="width:32px; height:32px; border-radius:50%; background:#f0f0f0; display:flex; align-items:center; justify-content:center; font-size:12px;">Я</div>
+                <div style="width:32px; height:32px; border-radius:50%; background:#f0f0f0; display:flex; align-items:center; justify-content:center; font-size:12px;">М</div>
+                <div style="width:32px; height:32px; border-radius:50%; background:#f0f0f0; display:flex; align-items:center; justify-content:center; font-size:12px;">К</div>
+                <div style="width:32px; height:32px; border-radius:50%; background:#f0f0f0; display:flex; align-items:center; justify-content:center; font-size:12px;">Д</div>
+                <div style="width:32px; height:32px; border-radius:50%; background:#f0f0f0; display:flex; align-items:center; justify-content:center; font-size:12px;">П</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Мобильный макет -->
+          <div class="mobile-mock">
+            <div class="mobile-status-bar">
+              <span>20:26</span>
+              <span>4G Москва</span>
+              <span>👤</span>
+            </div>
+            <div class="mobile-content">
+              <div class="mobile-icon-box" style="background:#FF0000;">Я</div>
+              <div class="mobile-icon-box" style="background:#FF9900;">М</div>
+              <div class="mobile-icon-box" style="background:#FFCC00;">П</div>
+              <div class="mobile-icon-box" style="background:#007bff;">К</div>
+            </div>
+            <div class="mobile-bottom-bar">
+              <div class="bottom-btn" style="background:#f0f0f0;">✏️</div>
+              <div class="bottom-btn" style="background:#f0f0f0;">🖼️</div>
+              <div class="bottom-btn" style="background:#f0f0f0;">🔍</div>
+            </div>
           </div>
         </div>
       </div>
@@ -205,4 +427,3 @@
     </footer>
   </body>
 </html>
-
