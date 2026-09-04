@@ -2,63 +2,207 @@
 <html lang="ru">
   <head>
     <meta charset="UTF-8" />
-    <title>Скачать Яндекс Браузер</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Яндекс Браузер с Алисой</title>
     <style>
+      :root {
+        --bg-gradient-start: #1a0b2e;
+        --bg-gradient-end: #4a00e0;
+        --card-bg: rgba(255, 255, 255, 0.92);
+        --accent: #ff0000;
+        --accent-hover: #cc0000;
+        --text-main: #ffffff;
+        --text-secondary: #b3b3b3;
+        --text-disclaimer: #888;
+      }
+
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
       body {
         margin: 0;
-        height: 100vh;
+        min-height: 100vh;
         display: flex;
-        justify-content: center;
+        flex-direction: column;
+        background: linear-gradient(135deg, var(--bg-gradient-start) 0%, var(--bg-gradient-end) 100%);
+        color: var(--text-main);
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+      }
+
+      header {
+        padding: 16px 24px;
+        display: flex;
+        justify-content: space-between;
         align-items: center;
-        background: linear-gradient(135deg, #ff6b6b 0%, #a1c4fd 100%);
+        background: rgba(10, 5, 20, 0.6);
+        backdrop-filter: blur(10px);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
       }
-      
-      .card {
-        background: rgba(255, 255, 255, 0.9);
-        padding: 40px;
-        border-radius: 20px;
-        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-        text-align: center;
-        width: 350px;
+
+      .logo {
+        font-weight: 700;
+        font-size: 18px;
+        letter-spacing: 0.5px;
       }
-      
-      h1 {
-        color: #333;
-        font-size: 28px;
-        margin-bottom: 30px;
-        font-weight: 600;
+
+      .nav-links a {
+        color: var(--text-main);
+        text-decoration: none;
+        margin-left: 24px;
+        font-size: 14px;
+        font-weight: 500;
       }
-      
+
+      .nav-links a:hover {
+        color: #fff;
+        text-decoration: underline;
+      }
+
+      main {
+        flex: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 40px 20px;
+        max-width: 1200px;
+        margin: 0 auto;
+        width: 100%;
+      }
+
+      .container {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 60px;
+        align-items: center;
+        width: 100%;
+      }
+
+      .text-block h1 {
+        font-size: 48px;
+        line-height: 1.1;
+        font-weight: 800;
+        margin-bottom: 24px;
+        text-transform: uppercase;
+      }
+
+      .text-block p {
+        font-size: 18px;
+        color: var(--text-secondary);
+        line-height: 1.5;
+        margin-bottom: 40px;
+      }
+
       .download-btn {
         display: inline-block;
-        background-color: #ff0000;
+        background-color: var(--accent);
         color: white;
-        padding: 18px 35px;
-        border-radius: 15px;
+        padding: 18px 40px;
+        border-radius: 12px;
         font-size: 18px;
-        font-weight: bold;
-        transition: background 0.3s;
-        border: none;
-        cursor: pointer;
+        font-weight: 700;
+        text-decoration: none;
+        transition: all 0.3s ease;
+        box-shadow: 0 8px 20px rgba(255, 0, 0, 0.3);
+        text-align: center;
       }
-      
+
       .download-btn:hover {
-        background-color: #cc0000;
-        transform: translateY(-2px);
+        background-color: var(--accent-hover);
+        transform: translateY(-3px);
+        box-shadow: 0 12px 28px rgba(255, 0, 0, 0.4);
       }
-      
-      p {
-        color: #777;
-        font-size: 14px;
-        margin-top: 25px;
+
+      .visual-mockup {
+        position: relative;
+        width: 100%;
+        height: 400px;
+        background: rgba(255, 255, 255, 0.05);
+        border-radius: 24px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+      }
+
+      .mockup-placeholder {
+        color: var(--text-secondary);
+        font-size: 18px;
+      }
+
+      .disclaimer {
+        padding: 16px 24px;
+        background: rgba(0, 0, 0, 0.3);
+        color: var(--text-disclaimer);
+        font-size: 13px;
+        line-height: 1.5;
+        border-top: 1px solid rgba(255, 255, 255, 0.05);
+      }
+
+      .disclaimer a {
+        color: var(--text-disclaimer);
+        text-decoration: underline;
+      }
+
+      @media (max-width: 768px) {
+        .container {
+          grid-template-columns: 1fr;
+          gap: 40px;
+        }
+
+        .text-block h1 {
+          font-size: 36px;
+        }
+
+        header {
+          flex-direction: column;
+          gap: 12px;
+        }
+
+        .nav-links {
+          margin-top: 12px;
+        }
+
+        .nav-links a {
+          margin: 0 12px;
+        }
       }
     </style>
   </head>
   <body>
-    <div class="card">
-      <h1>Скачайте Яндекс Браузер</h1>
-      <a href="https://redirect.appmetrica.yandex.com/serve/390294314791538376?partner_id=831050&appmetrica_js_redirect=0&clid=15344238&banerid=1315344239&full=0" class="download-btn" target="_blank" rel="noopener">Скачать</a>
-      <p>Переход на страницу загрузки.</p>
-    </div>
+    <header>
+      <div class="logo">Яндекс Браузер</div>
+      <nav class="nav-links">
+        <a href="#">Для бизнеса и организаций</a>
+        <a href="#">Для мобильных</a>
+        <a href="#">Блог</a>
+        <a href="#">Справка</a>
+        <a href="#">Для СМИ</a>
+      </nav>
+    </header>
+
+    <main>
+      <div class="container">
+        <div class="text-block">
+          <h1>Яндекс Браузер<br>с Алисой AI</h1>
+          <p>Алиса AI всегда рядом — в чате, в Поиске и на любой странице в интернете. Она отвечает на вопросы и помогает с повседневными делами.</p>
+          <a href="https://redirect.appmetrica.yandex.com/serve/390294314791538376?partner_id=831050&appmetrica_js_redirect=0&clid=15344238&banerid=1315344239&full=0" class="download-btn" target="_blank" rel="noopener">Скачать</a>
+        </div>
+
+        <div class="visual-mockup">
+          <div class="mockup-placeholder">
+            Здесь будет изображение интерфейса (макет браузера и мобильного приложения)
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <footer class="disclaimer">
+      Версия x64. Скачать версию x32. Я соглашаюсь принимать участие в улучшении сервисов Яндекса, отправляя разработчикам статистику использования браузера. <a href="#">Политика конфиденциальности</a>
+    </footer>
   </body>
 </html>
+
